@@ -1,0 +1,245 @@
+
+Anaconda是一个用于科学计算的Python发行版，支持 Linux, Mac, Windows系统，提供了包管理与环境管理的功能，可以很方便地解决多版本python并存、切换以及各种第三方包安装问题。Anaconda利用工具/命令conda来进行package和environment的管理，并且已经包含了Python和相关的配套工具。
+
+
+
+Anaconda地址：
+
+anaconda可以在官网下载：https://www.anaconda.com/download/
+也可以在清华镜像下载：https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/
+
+也可使用我们提供的版本：
+链接：https://pan.baidu.com/s/1H-iXK98uVCl942nRxVK9kQ 密码：8xin
+
+https://github.com/hhy5277/jupytext
+
+
+Anaconda环境的创建/激活/删除/管理
+
+
+1. 环境的创建
+conda create -n py3 python=3.5
+创建环境的时候同时安装包
+conda create -n py3 python=3.5 numpy pandas
+
+2.环境的激活
+在 OSX/Linux 上
+source activate py3
+windows下
+activate py3
+
+3.列出所有环境
+conda env list
+
+4.删除环境
+conda remove -n py3 --all
+
+5.退出环境
+source deactivate
+
+6.升级
+升级Anaconda需要先升级conda
+
+conda update conda
+conda update anaconda
+conda update anaconda-navigator
+
+conda update -n base conda        //update最新版本的conda
+
+7.卸载Anaconda软件
+由于Anaconda的安装文件都包含在一个目录中，所以直接将该目录删除即可。删除整个Anaconda目录：
+
+计算机控制面板->程序与应用->卸载 //windows
+
+或者
+
+找到C:\ProgramData\Anaconda3\Uninstall-Anaconda3.exe执行卸载
+
+rm -rf anaconda    //ubuntu
+
+最后，建议清理下.bashrc中的Anaconda路径。
+
+
+
+
+
+Python多版本管理：
+
+安装Python2.7版本的命令：
+conda create -n py27 python=2.7 
+
+激活命令：
+win下
+activate py27
+mac下
+source activate py27
+
+安装kernel：
+pip install ipykernel
+
+python -m ipykernel install --name py27//会返回kernel的安装地址  Installed kernelspec py27 in C:\ProgramData\jupyter\kernels\py27
+
+附带提一下，想升级 pip 命令如下（此步非必须）：
+python -m pip install --upgrade pip
+
+
+进入到kernel安装路径C:\ProgramData\jupyter\kernels\py27下，用编辑器打开 kernel.json文件，可以查看对应的配置。
+
+退出python27环境：
+win下
+deactivate
+mac下
+source deactivate
+
+查看已有kernel：
+
+jupyter kernelspec list
+
+
+安装决策树可视化工具Graphviz
+
+下载链接：http://graphviz.gitlab.io/download/  或 http://www.graphviz.org/download/
+
+安装参考链接：https://www.cnblogs.com/timxgb/p/9490219.html
+https://www.cnblogs.com/timxgb/p/9490219.html
+
+1.下载并安装（使用安装包安装）
+
+或在cmd界面输入conda install python-graphviz来安装graphviz。 
+
+或者
+
+
+通过Anaconda安装Graphviz
+
+简单三步走
+：
+
+1.打开Anaconda终端，Open terminal
+
+
+(Anaconda Navigator->Environments->Open Terminal  或者 Anaconda Prompt)
+
+2.在终端窗口依次输入：
+
+conda install graphviz 
+
+pip install graphviz 
+
+
+
+
+3.添加环境变量
+
+将Graphviz的安装路径（C:\Users\Administrator.WIN-UBO5RR3SADA\Anaconda3\Library\bin\graphviz），添加到环境变量PATH中即可。
+
+
+4.jupyter notebook 输入 import graphviz 执行 验证  或 cmd下输入 dot -version验证安装是否成功。
+
+或者 通过 conda-forge (可能需要翻墙)
+
+conda install -c conda-forge graphviz 
+
+conda install -c conda-forge python-graphviz 
+
+或者cmd下 
+
+conda install python-graphviz
+
+
+pydotplus安装和基本入门
+https://mlln.cn/2018/09/21/pydotplus%E5%AE%89%E8%A3%85%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%85%A5%E9%97%A8/
+
+
+
+https://github.com/mwouts/jupytext
+https://pypi.org/project/jupytext/
+
+
+安装TensorFlow与Keras
+
+TensorFlow具体安装步骤
+
+TensorFlow 有两个版本：CPU 版本和 GPU 版本。GPU 版本需要 CUDA 和 cuDNN 的支持，CPU 版本不需要。
+
+1.打开Anaconda prompt,通过调用以下命令创建名为 tensorflow 的conda环境:conda create -n tensorflow python=3.5
+
+2.通过发出以下命令来激活conda环境: activate tensorflow
+
+3.确保名叫tensorflow的环境已经被成功添加：conda info --envs 
+
+4.要安装 GPU 版本的 TensorFlow, 请输入以下命令 (在一行中): pip install --ignore-installed --upgrade tensorflow-gpu
+
+5.验证您的安装	打开Anaconda Prompt之后，激活conda环境:  activate tensorflow	输入：python 
+
+之后输入以下程序：
+
+-----------------------------------------------
+
+ 　　import tensorflow as tf
+
+　　 hello = tf.constant('Hello, TensorFlow!')
+
+　　sess = tf.Session()
+
+　　print(sess.run(hello))
+
+
+
+Keras具体安装步骤
+
+
+1.打开Anaconda Prompt之后，激活conda环境:  activate tensorflow
+
+2.安装keras,使用命令： pip install keras
+
+3.验证您的安装。输入命令 python，然后输入 import keras，如果没有报错，则安装成功
+
+
+
+
+
+
+anaconda安装最新的TensorFlow版本
+
+1.打开anaconda-prompt
+
+2.查看tensorflow各个版本
+anaconda search -t conda tensorflow  
+
+3.找到自己安装环境对应的最新TensorFlow后（可以在终端搜索anaconda，定位到那一行），然后查看指定包<USER/PACKAGE>可安装版本信息命令
+anaconda show <USER/PACKAGE> 
+查看tensorflow版本信息
+anaconda show anaconda/tensorflow
+
+4.第4步会提供一个下载地址，使用下面命令就可安装1.8.0版本tensorflow
+conda install --channel https://conda.anaconda.org/anaconda tensorflow=1.8.0 
+更新，卸载安装包：
+
+conda list         #查看已经安装的文件包
+conda list  -n xxx       #指定查看xxx虚拟环境下安装的package
+conda update xxx   #更新xxx文件包
+conda uninstall xxx   #卸载xxx文件包
+
+5.删除虚拟环境
+conda remove -n xxxx --all   //创建xxxx虚拟环境
+
+6.清理（conda瘦身）
+conda clean就可以轻松搞定！第一步：通过conda clean -p来删除一些没用的包，这个命令会检查哪些包没有在包缓存中被硬依赖到其他地方，并删除它们。第二步：通过conda clean -t可以将conda保存下来的tar包。
+
+conda clean -p      //删除没有用的包
+conda clean -t      //tar打包
+conda clean -y -all //删除所有的安装包及cache
+
+jupyter notebook默认工作目录设置
+
+1）在Anaconda Prompt终端中输入下面命令，查看你的notebook配置文件在哪里：
+
+jupyter notebook --generate-config
+#会生成文件C:\Users\用户\.jupyter\jupyter_notebook_config.py
+
+2）打开jupyter_notebook_config.py文件通过搜索关键词：c.NotebookApp.notebook_dir，修改如下
+
+c.NotebookApp.notebook_dir = 'E:\\tf_models'     //修改到自定义文件夹
+
+3）然后重启notebook服务器就可以了
